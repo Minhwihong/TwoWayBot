@@ -18,6 +18,11 @@ namespace winFormSenValAnalyzer.control
         UDP_Data commData { get; set; }
     }
 
+    public interface iTestData
+    {
+        int Mode { get; set; }
+    }
+
 
     
 }

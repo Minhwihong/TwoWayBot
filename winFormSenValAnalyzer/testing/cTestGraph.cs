@@ -8,6 +8,10 @@ namespace winFormSenValAnalyzer.testing
 {
     class cTestGraph
     {
+
+        double valMax = 1.0;
+        double valMin = -1.0;
+
         public cTestGraph()
         {
 
@@ -15,9 +19,31 @@ namespace winFormSenValAnalyzer.testing
 
 
 
-        double get_simulation_data()
+        public void set_MinMax(double min, double max)
         {
-            return 0.0;
+            valMax = max;
+            valMin = min;
+        }
+
+
+
+        public double get_simulation_data()
+        {
+            var random = new Random();
+
+            double randomVal = random.NextDouble();
+
+            if(randomVal >= 0.5)
+            {
+                randomVal -= randomVal;
+                return randomVal * valMax * 2.0;
+            }
+            else
+            {
+                return randomVal * valMax * (2.0);
+            }
+
+            
         }
 
 

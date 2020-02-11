@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace winFormSenValAnalyzer.control
 {
+    static public class cProgramMode
+    {
+        public const byte NORMAL = 0;
+        public const byte TEST = 1;
+    }
+
     static public class cUDP_CMD
     {
         public const byte uFRM_ID_NORMAL = (byte)'N';

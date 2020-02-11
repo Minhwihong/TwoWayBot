@@ -25,10 +25,13 @@ using winFormSenValAnalyzer.testing;
 
 namespace winFormSenValAnalyzer
 {
-    public partial class Form1 : Form, iShareData, iCommData
+    public partial class Form1 : Form, iShareData, iCommData, iTestData
     {
         // ------------ 인터페이스 정의 -------------- // 
+        #region Define_Interface
         public DataTable tbMeas { get; set; }
+        public int CurrentMode { get; set; }
+        
 
         DataTable iShareData.myData
         {
@@ -36,6 +39,11 @@ namespace winFormSenValAnalyzer
             set { this.tbMeas = value; }
         }
 
+        int iTestData.Mode
+        {
+            get { return this.CurrentMode; }
+            set { this.CurrentMode = value; }
+        }
 
         public UDP_Data commData { get; set; }
 
@@ -44,7 +52,9 @@ namespace winFormSenValAnalyzer
             get { return this.commData; }
             set { this.commData = value; }
         }
+        #endregion
         // ---------------------------------------- // 
+
 
 
         // (1) UdpClient 객체 성성. 포트 7777 에서 Listening
@@ -101,26 +111,15 @@ namespace winFormSenValAnalyzer
             // 클라이언트 IP를 담을 변수
             remoteEP    = new IPEndPoint(IPAddress.Any, 0);
 
+            CurrentMode = 0;
+
             tbInit_tables();
             grInit_graph();
 
         }
 
 
-        private void thEPS32_UDP_server()
-        {
-            while (true)
-            {          
-                // (2) 데이타 수신
-                byte[] dgram = srv.Receive(ref remoteEP);
-
-                if (dgram.Length > 0)
-                {
-                    udpHandle.UDP_RcvHandle(dgram);
-                }
-
-            }
-        }
+        
 
         private sIMU6 ParseIMU6_fromUDP(UDP_Data inData)
         {
@@ -144,52 +143,20 @@ namespace winFormSenValAnalyzer
 
         }
 
-        private void tmUDPListener_Tick(object sender, EventArgs e)
-        {
-            UDP_Data rcvPkt = udpHandle.getPacket();
-            if (rcvPkt.pkt_cmd != 0)
-            {
-
-                switch(rcvPkt.pkt_cmd)
-                {
-                    case cUDP_CMD.uCMD_IMU_GET_VALUE:
-
-                        sIMU6 sensing_data = ParseIMU6_fromUDP(rcvPkt);
-                        tbAdd_6axit_data(timePassed, sensing_data);
-
-                        cBotPos pos = new cBotPos();
-                        
-                        deg_normal = pos.deg_DegTheta(sensing_data.AccY, sensing_data.AccZ);
-
-                        txtTheta.Text   = deg_normal.ToString();
-
-                        if (dataLogSts)
-                        {
-                            grAcc.addPoint(ref chrtAcceleration, timePassed, new double[] { sensing_data.AccX, sensing_data.AccY, sensing_data.AccZ });
-                            grAcc.adjust_Yaxis_scale(ref chrtAcceleration, new double[] { sensing_data.AccX, sensing_data.AccY, sensing_data.AccZ });
-
-                            grGyro.addPoint(ref chrtGyroscope, timePassed, new double[] { sensing_data.Roll, sensing_data.Pitch, sensing_data.Yaw });
-                            grGyro.adjust_Yaxis_scale(ref chrtGyroscope, new double[] { sensing_data.Roll, sensing_data.Pitch, sensing_data.Yaw });
-
-                            chrtDegree.Series["DgrNormal"].Points.AddXY(timePassed, deg_normal);
-                            chrtDegree.Series["Filtered"].Points.AddXY(timePassed, filteredDeg);
-                        }
-
-                        timePassed = timePassed + 100;
-                        break;
-
-                    case cUDP_CMD.uCMD_PID_GET_PARAM:
-                        break;
-                }
-
-                
-            }
-
-
-        }
+        
 
         private void btnServerOpen_Click(object sender, EventArgs e)
         {
+            //test mode
+            if(CurrentMode == cProgramMode.TEST)
+            {
+                initTestMode(-10.0, 10.0);
+                tmUDPListener.Enabled = true;
+                tabBotCtl.Enabled = true;
+                grbBotCtl.Enabled = true;
+                return;
+            }
+
 
             // (1) UdpClient 객체 성성. 포트 7777 에서 Listening
             srv = new UdpClient(Convert.ToInt32(txtUDP_PortNum.Text));
@@ -344,10 +311,6 @@ namespace winFormSenValAnalyzer
 
         private void btnLogStart_Click(object sender, EventArgs e)
         {
-            byte[] sendData = udpHandle.UDP_sendData(cUDP_CMD.uCMD_IMU_GET_VALUE);
-            srv.Send(sendData, sendData.Length, remoteEP);
-
-
             if (dataLogSts == false)
             {
                 dataLogSts = true;
@@ -358,8 +321,15 @@ namespace winFormSenValAnalyzer
                 dataLogSts = false;
                 btnLogStart.Text = "로깅시작";
             }
-                
 
+
+            if (CurrentMode == cProgramMode.TEST)
+            {
+                return;
+            }
+                
+            byte[] sendData = udpHandle.UDP_sendData(cUDP_CMD.uCMD_IMU_GET_VALUE);
+            srv.Send(sendData, sendData.Length, remoteEP);
         }
 
 
@@ -445,6 +415,12 @@ namespace winFormSenValAnalyzer
             byte[] sendData = udpHandle.UDP_sendData(cUDP_CMD.uCMD_PID_SET_TRT_ANGLE, payload.Length, payload);
 
             srv.Send(sendData, sendData.Length, remoteEP);
+        }
+
+        private void testModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            form.frmTestSetting fTestSetting = new form.frmTestSetting(this as iTestData);
+            fTestSetting.Show();
         }
     }
 

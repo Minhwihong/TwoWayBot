@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chrtAcceleration = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtUDP_PortNum = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -97,6 +97,7 @@
             this.tabBotCtl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnSetTrgAngle = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -121,7 +122,7 @@
             this.chbShowAccX = new System.Windows.Forms.CheckBox();
             this.chrtGyroscope = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grvMonitor = new System.Windows.Forms.DataGridView();
-            this.btnSetTrgAngle = new System.Windows.Forms.Button();
+            this.testModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.chrtAcceleration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chrtDegree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPWMDuty)).BeginInit();
@@ -150,16 +151,16 @@
             // 
             // chrtAcceleration
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chrtAcceleration.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chrtAcceleration.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chrtAcceleration.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chrtAcceleration.Legends.Add(legend4);
             this.chrtAcceleration.Location = new System.Drawing.Point(81, 7);
             this.chrtAcceleration.Name = "chrtAcceleration";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chrtAcceleration.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chrtAcceleration.Series.Add(series4);
             this.chrtAcceleration.Size = new System.Drawing.Size(853, 190);
             this.chrtAcceleration.TabIndex = 0;
             this.chrtAcceleration.Text = "chart1";
@@ -230,16 +231,16 @@
             // 
             // chrtDegree
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chrtDegree.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chrtDegree.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.chrtDegree.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chrtDegree.Legends.Add(legend5);
             this.chrtDegree.Location = new System.Drawing.Point(81, 399);
             this.chrtDegree.Name = "chrtDegree";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chrtDegree.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chrtDegree.Series.Add(series5);
             this.chrtDegree.Size = new System.Drawing.Size(853, 190);
             this.chrtDegree.TabIndex = 29;
             this.chrtDegree.Text = "chart1";
@@ -620,7 +621,8 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uDPToolStripMenuItem});
+            this.uDPToolStripMenuItem,
+            this.testModeToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.settingToolStripMenuItem.Text = "setting";
@@ -628,7 +630,7 @@
             // uDPToolStripMenuItem
             // 
             this.uDPToolStripMenuItem.Name = "uDPToolStripMenuItem";
-            this.uDPToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.uDPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uDPToolStripMenuItem.Text = "setup";
             // 
             // toolStrip1
@@ -791,6 +793,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "각도 보정";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnSetTrgAngle
+            // 
+            this.btnSetTrgAngle.Location = new System.Drawing.Point(121, 51);
+            this.btnSetTrgAngle.Name = "btnSetTrgAngle";
+            this.btnSetTrgAngle.Size = new System.Drawing.Size(85, 26);
+            this.btnSetTrgAngle.TabIndex = 64;
+            this.btnSetTrgAngle.Text = "적용";
+            this.btnSetTrgAngle.UseVisualStyleBackColor = true;
+            this.btnSetTrgAngle.Click += new System.EventHandler(this.btnSetTrgAngle_Click);
             // 
             // groupBox3
             // 
@@ -1058,16 +1070,16 @@
             // 
             // chrtGyroscope
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chrtGyroscope.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chrtGyroscope.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            this.chrtGyroscope.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chrtGyroscope.Legends.Add(legend6);
             this.chrtGyroscope.Location = new System.Drawing.Point(81, 203);
             this.chrtGyroscope.Name = "chrtGyroscope";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chrtGyroscope.Series.Add(series3);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chrtGyroscope.Series.Add(series6);
             this.chrtGyroscope.Size = new System.Drawing.Size(853, 190);
             this.chrtGyroscope.TabIndex = 3;
             this.chrtGyroscope.Text = "chart2";
@@ -1081,15 +1093,12 @@
             this.grvMonitor.Size = new System.Drawing.Size(865, 71);
             this.grvMonitor.TabIndex = 70;
             // 
-            // btnSetTrgAngle
+            // testModeToolStripMenuItem
             // 
-            this.btnSetTrgAngle.Location = new System.Drawing.Point(121, 51);
-            this.btnSetTrgAngle.Name = "btnSetTrgAngle";
-            this.btnSetTrgAngle.Size = new System.Drawing.Size(85, 26);
-            this.btnSetTrgAngle.TabIndex = 64;
-            this.btnSetTrgAngle.Text = "적용";
-            this.btnSetTrgAngle.UseVisualStyleBackColor = true;
-            this.btnSetTrgAngle.Click += new System.EventHandler(this.btnSetTrgAngle_Click);
+            this.testModeToolStripMenuItem.Name = "testModeToolStripMenuItem";
+            this.testModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testModeToolStripMenuItem.Text = "TestMode";
+            this.testModeToolStripMenuItem.Click += new System.EventHandler(this.testModeToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -1230,6 +1239,7 @@
         private System.Windows.Forms.CheckBox chbShowAccX;
         private System.Windows.Forms.GroupBox grbBotCtl;
         private System.Windows.Forms.Button btnSetTrgAngle;
+        private System.Windows.Forms.ToolStripMenuItem testModeToolStripMenuItem;
     }
 }
 

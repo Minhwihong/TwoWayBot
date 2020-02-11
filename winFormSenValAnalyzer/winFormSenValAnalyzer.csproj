@@ -79,13 +79,25 @@
     <Compile Include="form\frmTable.Designer.cs">
       <DependentUpon>frmTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\frmTestSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmTestSetting.Designer.cs">
+      <DependentUpon>frmTestSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="testing\cTestGraph.cs" />
     <Compile Include="view\cGraph.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="view\cRcvHandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="view\cTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\cTesting.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
@@ -99,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\frmTable.resx">
       <DependentUpon>frmTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmTestSetting.resx">
+      <DependentUpon>frmTestSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

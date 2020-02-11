@@ -32,3 +32,17 @@ D:\robotics\myPrograms\winFormSenValAnalyzer\working3\winFormSenValAnalyzer\obj\
 D:\robotics\myPrograms\winFormSenValAnalyzer\working3\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.exe
 D:\robotics\myPrograms\winFormSenValAnalyzer\working3\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.pdb
 D:\robotics\myPrograms\winFormSenValAnalyzer\working3\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.csprojAssemblyReference.cache
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\bin\Debug\winFormSenValAnalyzer.exe.config
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\bin\Debug\winFormSenValAnalyzer.exe
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\bin\Debug\winFormSenValAnalyzer.pdb
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.csprojAssemblyReference.cache
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.Form1.resources
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.form.frmGraph.resources
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.form.frmSetup.resources
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.form.frmTable.resources
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.form.frmTestSetting.resources
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.Properties.Resources.resources
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.csproj.GenerateResource.cache
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.csproj.CoreCompileInputs.cache
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.exe
+D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.pdb
