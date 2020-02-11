@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="testing\cTestGraph.cs" />
     <Compile Include="view\cGraph.cs">
       <SubType>Form</SubType>
     </Compile>
