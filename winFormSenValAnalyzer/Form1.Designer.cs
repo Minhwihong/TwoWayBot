@@ -82,11 +82,13 @@
             this.btnPID_renew = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uDPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -122,7 +124,7 @@
             this.chbShowAccX = new System.Windows.Forms.CheckBox();
             this.chrtGyroscope = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grvMonitor = new System.Windows.Forms.DataGridView();
-            this.testModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPIDLogging = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chrtAcceleration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chrtDegree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPWMDuty)).BeginInit();
@@ -432,7 +434,7 @@
             // 
             // btnPID_start
             // 
-            this.btnPID_start.Location = new System.Drawing.Point(117, 20);
+            this.btnPID_start.Location = new System.Drawing.Point(117, 19);
             this.btnPID_start.Name = "btnPID_start";
             this.btnPID_start.Size = new System.Drawing.Size(84, 25);
             this.btnPID_start.TabIndex = 48;
@@ -442,7 +444,7 @@
             // 
             // btnPID_stop
             // 
-            this.btnPID_stop.Location = new System.Drawing.Point(117, 51);
+            this.btnPID_stop.Location = new System.Drawing.Point(117, 45);
             this.btnPID_stop.Name = "btnPID_stop";
             this.btnPID_stop.Size = new System.Drawing.Size(84, 25);
             this.btnPID_stop.TabIndex = 49;
@@ -452,7 +454,7 @@
             // 
             // btnPID_reset
             // 
-            this.btnPID_reset.Location = new System.Drawing.Point(117, 82);
+            this.btnPID_reset.Location = new System.Drawing.Point(117, 71);
             this.btnPID_reset.Name = "btnPID_reset";
             this.btnPID_reset.Size = new System.Drawing.Size(84, 25);
             this.btnPID_reset.TabIndex = 50;
@@ -465,6 +467,7 @@
             this.txtPID_err.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPID_err.Location = new System.Drawing.Point(78, 18);
             this.txtPID_err.Name = "txtPID_err";
+            this.txtPID_err.ReadOnly = true;
             this.txtPID_err.Size = new System.Drawing.Size(125, 22);
             this.txtPID_err.TabIndex = 51;
             // 
@@ -473,6 +476,7 @@
             this.txtPID_accumErr.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPID_accumErr.Location = new System.Drawing.Point(78, 46);
             this.txtPID_accumErr.Name = "txtPID_accumErr";
+            this.txtPID_accumErr.ReadOnly = true;
             this.txtPID_accumErr.Size = new System.Drawing.Size(125, 22);
             this.txtPID_accumErr.TabIndex = 52;
             // 
@@ -481,6 +485,7 @@
             this.txtPID_Ireg.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPID_Ireg.Location = new System.Drawing.Point(78, 103);
             this.txtPID_Ireg.Name = "txtPID_Ireg";
+            this.txtPID_Ireg.ReadOnly = true;
             this.txtPID_Ireg.Size = new System.Drawing.Size(125, 22);
             this.txtPID_Ireg.TabIndex = 54;
             // 
@@ -489,6 +494,7 @@
             this.txtPID_Preg.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPID_Preg.Location = new System.Drawing.Point(78, 75);
             this.txtPID_Preg.Name = "txtPID_Preg";
+            this.txtPID_Preg.ReadOnly = true;
             this.txtPID_Preg.Size = new System.Drawing.Size(125, 22);
             this.txtPID_Preg.TabIndex = 53;
             // 
@@ -497,6 +503,7 @@
             this.txtPID_Dreg.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPID_Dreg.Location = new System.Drawing.Point(78, 131);
             this.txtPID_Dreg.Name = "txtPID_Dreg";
+            this.txtPID_Dreg.ReadOnly = true;
             this.txtPID_Dreg.Size = new System.Drawing.Size(125, 22);
             this.txtPID_Dreg.TabIndex = 55;
             // 
@@ -555,6 +562,7 @@
             this.txtPID_val.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPID_val.Location = new System.Drawing.Point(78, 159);
             this.txtPID_val.Name = "txtPID_val";
+            this.txtPID_val.ReadOnly = true;
             this.txtPID_val.Size = new System.Drawing.Size(125, 22);
             this.txtPID_val.TabIndex = 61;
             // 
@@ -592,9 +600,18 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Text = "exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -630,8 +647,15 @@
             // uDPToolStripMenuItem
             // 
             this.uDPToolStripMenuItem.Name = "uDPToolStripMenuItem";
-            this.uDPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uDPToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.uDPToolStripMenuItem.Text = "setup";
+            // 
+            // testModeToolStripMenuItem
+            // 
+            this.testModeToolStripMenuItem.Name = "testModeToolStripMenuItem";
+            this.testModeToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.testModeToolStripMenuItem.Text = "TestMode";
+            this.testModeToolStripMenuItem.Click += new System.EventHandler(this.testModeToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -675,6 +699,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnPIDLogging);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.numPID_Kp);
             this.groupBox2.Controls.Add(this.numPID_Ki);
@@ -1093,12 +1118,15 @@
             this.grvMonitor.Size = new System.Drawing.Size(865, 71);
             this.grvMonitor.TabIndex = 70;
             // 
-            // testModeToolStripMenuItem
+            // btnPIDLogging
             // 
-            this.testModeToolStripMenuItem.Name = "testModeToolStripMenuItem";
-            this.testModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.testModeToolStripMenuItem.Text = "TestMode";
-            this.testModeToolStripMenuItem.Click += new System.EventHandler(this.testModeToolStripMenuItem_Click);
+            this.btnPIDLogging.Location = new System.Drawing.Point(117, 100);
+            this.btnPIDLogging.Name = "btnPIDLogging";
+            this.btnPIDLogging.Size = new System.Drawing.Size(84, 25);
+            this.btnPIDLogging.TabIndex = 64;
+            this.btnPIDLogging.Text = "PID 로깅";
+            this.btnPIDLogging.UseVisualStyleBackColor = true;
+            this.btnPIDLogging.Click += new System.EventHandler(this.btnPIDLogging_Click);
             // 
             // Form1
             // 
@@ -1240,6 +1268,8 @@
         private System.Windows.Forms.GroupBox grbBotCtl;
         private System.Windows.Forms.Button btnSetTrgAngle;
         private System.Windows.Forms.ToolStripMenuItem testModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button btnPIDLogging;
     }
 }
 

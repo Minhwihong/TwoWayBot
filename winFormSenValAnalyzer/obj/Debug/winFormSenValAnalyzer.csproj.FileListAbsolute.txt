@@ -46,3 +46,16 @@ D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\
 D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.csproj.CoreCompileInputs.cache
 D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.exe
 D:\testProject\test\winFormController\TwoWayBot\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.pdb
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\bin\Debug\winFormSenValAnalyzer.exe.config
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\bin\Debug\winFormSenValAnalyzer.exe
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\bin\Debug\winFormSenValAnalyzer.pdb
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.csprojAssemblyReference.cache
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.Form1.resources
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.form.frmGraph.resources
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.form.frmSetup.resources
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.form.frmTable.resources
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.form.frmTestSetting.resources
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.Properties.Resources.resources
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.csproj.GenerateResource.cache
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.exe
+D:\robotics\myPrograms\winFormSenValAnalyzer\repository\winFormSenValAnalyzer\obj\Debug\winFormSenValAnalyzer.pdb

@@ -85,12 +85,68 @@ namespace winFormSenValAnalyzer
                         break;
 
                     case cUDP_CMD.uCMD_PID_GET_PARAM:
+                        int offset = 0;
+                        double dVal = 0.0;
+                        cPID PIDctl = new cPID();
+
+                        dVal = BitConverter.ToDouble(rcvPkt.payload, offset);
+                        offset += sizeof(double);
+                        PIDctl.curr_err = dVal;
+                        
+                        dVal = BitConverter.ToDouble(rcvPkt.payload, offset);
+                        offset += sizeof(double);
+                        PIDctl.accum_err = dVal;
+                        
+                        dVal = BitConverter.ToDouble(rcvPkt.payload, offset);
+                        offset += sizeof(double);
+                        PIDctl.P_reg = dVal;
+                        
+                        dVal = BitConverter.ToDouble(rcvPkt.payload, offset);
+                        offset += sizeof(double);
+                        PIDctl.I_reg = dVal;
+                        
+                        dVal = BitConverter.ToDouble(rcvPkt.payload, offset);
+                        offset += sizeof(double);
+                        PIDctl.D_reg = dVal;
+                       
+
+                        txtPID_err.Text = string.Format("{0:0.0000}", PIDctl.curr_err);
+                        txtPID_accumErr.Text = string.Format("{0:0.0000}", PIDctl.accum_err);
+                        txtPID_Preg.Text = string.Format("{0:0.0000}", PIDctl.P_reg);
+                        txtPID_Ireg.Text = string.Format("{0:0.0000}", PIDctl.I_reg);
+                        txtPID_Dreg.Text = string.Format("{0:0.0000}", PIDctl.D_reg);
+                        txtPID_val.Text = string.Format("{0:0.0000}", PIDctl.P_reg + PIDctl.D_reg + PIDctl.D_reg);
                         break;
                 }
 
 
             }
 
+
+        }
+
+
+        
+
+        private sIMU6 ParseIMU6_fromUDP(UDP_Data inData)
+        {
+            sIMU6 sensing_data;
+
+            int offset = 0;
+            sensing_data.AccX = BitConverter.ToSingle(inData.payload, offset);
+            offset += 4;
+            sensing_data.AccY = BitConverter.ToSingle(inData.payload, offset);
+            offset += 4;
+            sensing_data.AccZ = BitConverter.ToSingle(inData.payload, offset);
+            offset += 4;
+            sensing_data.Roll = BitConverter.ToSingle(inData.payload, offset);
+            offset += 4;
+            sensing_data.Pitch = BitConverter.ToSingle(inData.payload, offset);
+            offset += 4;
+            sensing_data.Yaw = BitConverter.ToSingle(inData.payload, offset);
+            offset += 4;
+
+            return sensing_data;
 
         }
 

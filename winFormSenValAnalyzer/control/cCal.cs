@@ -35,6 +35,8 @@ namespace winFormSenValAnalyzer.control
 
     }
 
+
+
     public struct sBotPos
     {
         public sBotPos(double _degTheta, double _radTheta, double _degTow, double _radTow)
@@ -50,6 +52,39 @@ namespace winFormSenValAnalyzer.control
         double degTow;
         double radTow;
     }
+
+
+    class cPID
+    {
+        public cPID()
+        {
+            curr_err = 0.0;
+            accum_err = 0.0;
+            P_reg = 0.0;
+            I_reg = 0.0;
+            D_reg = 0.0;
+        }
+
+        private double pCurr_err;
+        private double pAccum_err;
+        private double pP_reg;
+        private double pI_reg;
+        private double pD_reg;
+
+        public double curr_err { get { return this.pCurr_err; }  set { this.pCurr_err = value; } }
+        public double accum_err { get { return this.pAccum_err; }  set { this.pAccum_err = value; } }
+        public double P_reg { get { return this.pP_reg; }  set { this.pP_reg = value; } }
+        public double I_reg { get { return this.pI_reg; }  set { this.pI_reg = value; } }
+        public double D_reg { get { return this.pD_reg; }  set { this.pD_reg = value; } }
+
+        //public double curr_err { get; set; }
+        //public double accum_err { get; set; }
+        //public double P_reg { get; set; }
+        //public double I_reg { get; set; }
+        //public double D_reg { get; set; }
+    }
+
+
 
     class cBotPos
     {
@@ -72,12 +107,9 @@ namespace winFormSenValAnalyzer.control
 
 
 
-
         private double rad_theta;
 
-        
-
-
+ 
 
     }
 

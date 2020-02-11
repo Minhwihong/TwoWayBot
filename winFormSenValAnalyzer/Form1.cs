@@ -91,6 +91,8 @@ namespace winFormSenValAnalyzer
    
         DataTable tbMonitor;
 
+        cPID PIDctl;
+
 
         public Form1()
         {
@@ -116,32 +118,17 @@ namespace winFormSenValAnalyzer
             tbInit_tables();
             grInit_graph();
 
+
+            
+
+            
+
         }
 
 
         
 
-        private sIMU6 ParseIMU6_fromUDP(UDP_Data inData)
-        {
-            sIMU6 sensing_data;
-
-            int offset = 0;
-            sensing_data.AccX = BitConverter.ToSingle(inData.payload, offset);
-            offset += 4;
-            sensing_data.AccY = BitConverter.ToSingle(inData.payload, offset);
-            offset += 4;
-            sensing_data.AccZ = BitConverter.ToSingle(inData.payload, offset);
-            offset += 4;
-            sensing_data.Roll = BitConverter.ToSingle(inData.payload, offset);
-            offset += 4;
-            sensing_data.Pitch = BitConverter.ToSingle(inData.payload, offset);
-            offset += 4;
-            sensing_data.Yaw = BitConverter.ToSingle(inData.payload, offset);
-            offset += 4;
-
-            return sensing_data;
-
-        }
+       
 
         
 
@@ -421,6 +408,34 @@ namespace winFormSenValAnalyzer
         {
             form.frmTestSetting fTestSetting = new form.frmTestSetting(this as iTestData);
             fTestSetting.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnPIDLogging_Click(object sender, EventArgs e)
+        {
+            if (dataLogSts == false)
+            {
+                dataLogSts = true;
+                btnLogStart.Text = "로깅정지";
+            }
+            else
+            {
+                dataLogSts = false;
+                btnLogStart.Text = "로깅시작";
+            }
+
+
+            if (CurrentMode == cProgramMode.TEST)
+            {
+                return;
+            }
+
+            byte[] sendData = udpHandle.UDP_sendData(cUDP_CMD.uCMD_PID_GET_PARAM);
+            srv.Send(sendData, sendData.Length, remoteEP);
         }
     }
 
