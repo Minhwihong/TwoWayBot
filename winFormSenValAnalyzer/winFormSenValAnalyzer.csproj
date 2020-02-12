@@ -53,6 +53,7 @@
     <Compile Include="control\cCal.cs" />
     <Compile Include="control\cCMD.cs" />
     <Compile Include="control\cControlBot.cs" />
+    <Compile Include="control\cDefinition.cs" />
     <Compile Include="control\cUDPHandle.cs" />
     <Compile Include="control\iData.cs" />
     <Compile Include="Form1.cs">

@@ -39,14 +39,12 @@ namespace winFormSenValAnalyzer
             {
                 if (dataLogSts)
                 {
-                    grAcc.addPoint(ref chrtAcceleration, timePassed, new double[] { getRandomValue(), getRandomValue(), getRandomValue() });
-                    grAcc.adjust_Yaxis_scale(ref chrtAcceleration, new double[] { getRandomValue(), getRandomValue(), getRandomValue() });
+                    grAcc.addPoint(ref chrtAcceleration, timePassed, new double[] { getRandomValue(), 1.5 + getRandomValue(), 2.5 + getRandomValue(), -1.0 + getRandomValue(), -1.5 + getRandomValue(), -2.5 + getRandomValue() });
+                    grAcc.adjust_Yaxis_scale(ref chrtAcceleration, new double[] { getRandomValue(), 1.5 + getRandomValue(), 2.5 + getRandomValue(), -1.0 + getRandomValue(), -1.5 + getRandomValue(), -2.5 + getRandomValue() });
 
                     grGyro.addPoint(ref chrtGyroscope, timePassed, new double[] { getRandomValue(), getRandomValue(), getRandomValue() });
                     grGyro.adjust_Yaxis_scale(ref chrtGyroscope, new double[] { getRandomValue(), getRandomValue(), getRandomValue() });
 
-                    chrtDegree.Series["DgrNormal"].Points.AddXY(timePassed, deg_normal);
-                    chrtDegree.Series["Filtered"].Points.AddXY(timePassed, filteredDeg);
                 }
                 timePassed = timePassed + 100;
                 return;
@@ -71,14 +69,8 @@ namespace winFormSenValAnalyzer
 
                         if (dataLogSts)
                         {
-                            grAcc.addPoint(ref chrtAcceleration, timePassed, new double[] { sensing_data.AccX, sensing_data.AccY, sensing_data.AccZ });
-                            grAcc.adjust_Yaxis_scale(ref chrtAcceleration, new double[] { sensing_data.AccX, sensing_data.AccY, sensing_data.AccZ });
-
-                            grGyro.addPoint(ref chrtGyroscope, timePassed, new double[] { sensing_data.Roll, sensing_data.Pitch, sensing_data.Yaw });
-                            grGyro.adjust_Yaxis_scale(ref chrtGyroscope, new double[] { sensing_data.Roll, sensing_data.Pitch, sensing_data.Yaw });
-
-                            chrtDegree.Series["DgrNormal"].Points.AddXY(timePassed, deg_normal);
-                            chrtDegree.Series["Filtered"].Points.AddXY(timePassed, filteredDeg);
+                            grAcc.addPoint(ref chrtAcceleration, timePassed, new double[] { sensing_data.AccX, sensing_data.AccY, sensing_data.AccZ, sensing_data.Roll, sensing_data.Pitch, sensing_data.Yaw });
+                            grAcc.adjust_Yaxis_scale(ref chrtAcceleration, new double[] { sensing_data.AccX, sensing_data.AccY, sensing_data.AccZ, sensing_data.Roll, sensing_data.Pitch, sensing_data.Yaw });
                         }
 
                         timePassed = timePassed + 100;
@@ -108,7 +100,11 @@ namespace winFormSenValAnalyzer
                         dVal = BitConverter.ToDouble(rcvPkt.payload, offset);
                         offset += sizeof(double);
                         PIDctl.D_reg = dVal;
-                       
+
+
+                        grGyro.addPoint(ref chrtGyroscope, timePassed, new double[] { PIDctl.curr_err, PIDctl.accum_err, PIDctl.curr_err, PIDctl.accum_err });
+                        grGyro.adjust_Yaxis_scale(ref chrtGyroscope, new double[] { PIDctl.curr_err, PIDctl.accum_err, PIDctl.curr_err, PIDctl.accum_err });
+
 
                         txtPID_err.Text = string.Format("{0:0.0000}", PIDctl.curr_err);
                         txtPID_accumErr.Text = string.Format("{0:0.0000}", PIDctl.accum_err);

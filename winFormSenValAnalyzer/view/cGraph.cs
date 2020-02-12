@@ -4,38 +4,239 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Forms;
 using winFormSenValAnalyzer.control;
+
 
 namespace winFormSenValAnalyzer
 {
     partial class Form1 : iShareData
     {
+        private const float CZoomScale = 4f;
+        private int FZoomLevel = 0;
+
+
         private void grInit_graph()
         {
+            
             // init Acc Graph
-            grAcc.createGraph(ref chrtAcceleration, "Acceleration", new string[] { "AccX", "AccY", "AccZ" });
+            grAcc.createGraph(ref chrtAcceleration, cGrName.GraphIMU, new string[] { cSeries.AccX, cSeries.AccY, cSeries.AccZ, cSeries.Roll, cSeries.Pitch, cSeries.Yaw });
+
             grAcc.setGraphType(ref chrtAcceleration, 0);
+
             chrtAcceleration.ChartAreas[0].AxisX.Minimum = 0;
-            grAcc.setGraph_Yaxis_MinMax(ref chrtAcceleration, minAccVal, maxAccVal);
+
+            //chrtAcceleration.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+            //chrtAcceleration.ChartAreas[0].AxisY2.MajorGrid.LineColor = System.Drawing.Color.Blue;
+
+            chrtAcceleration.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chrtAcceleration.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
+            chrtAcceleration.MouseWheel += chrtAcceleration_MouseWheel;
+
+            
+
+            grAcc.setGraph_Yaxis_MinMax(ref chrtAcceleration, minIMU_val, maxIMU_val);
 
 
             // init Gyro Graph
-            grGyro.createGraph(ref chrtGyroscope, "Gyroscope", new string[] { "GyroX", "GyroY", "GyroZ" });
+            grGyro.createGraph(ref chrtGyroscope, cGrName.GraphPID, new string[] { cSeries.CurrErr, cSeries.AccumErr, cSeries.TargetValue, cSeries.SensValue });
             grGyro.setGraphType(ref chrtGyroscope, 0);
             chrtGyroscope.ChartAreas[0].AxisX.Minimum = 0;
             grGyro.setGraph_Yaxis_MinMax(ref chrtGyroscope, minGyroVal, maxGyroVal);
 
 
-            // init Angle(degree) Graph
-            chrtDegree.Series.Clear();
-            chrtDegree.Series.Add("DgrNormal");
-            chrtDegree.Series.Add("Filtered");
-            chrtDegree.Series["DgrNormal"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chrtDegree.Series["Filtered"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chrtDegree.ChartAreas[0].AxisY.Minimum = -16;
-            chrtDegree.ChartAreas[0].AxisY.Maximum = 16;
-            chrtDegree.ChartAreas[0].AxisX.Minimum = 0;
+            Chart_Series_ShowHide();
         }
+
+        private void Chart_Series_ShowHide()
+        {
+            if(chbShowAccX.Checked == true)
+                chrtAcceleration.Series[cSeries.AccX].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.AccX].Enabled = false;
+
+            if (chbShowAccY.Checked == true)
+                chrtAcceleration.Series[cSeries.AccY].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.AccY].Enabled = false;
+
+            if (chbShowAccZ.Checked == true)
+                chrtAcceleration.Series[cSeries.AccZ].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.AccZ].Enabled = false;
+
+
+
+            if (chbShowGyroX.Checked == true)
+                chrtAcceleration.Series[cSeries.Roll].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.Roll].Enabled = false;
+
+            if (chbShowGyroY.Checked == true)
+                chrtAcceleration.Series[cSeries.Pitch].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.Pitch].Enabled = false;
+
+            if (chbShowGyroZ.Checked == true)
+                chrtAcceleration.Series[cSeries.Yaw].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.Yaw].Enabled = false;
+
+
+
+            if (chbCurrErr.Checked == true)
+                chrtGyroscope.Series[cSeries.CurrErr].Enabled = true;
+            else
+                chrtGyroscope.Series[cSeries.CurrErr].Enabled = false;
+
+            if (chbAccumErr.Checked == true)
+                chrtGyroscope.Series[cSeries.AccumErr].Enabled = true;
+            else
+                chrtGyroscope.Series[cSeries.AccumErr].Enabled = false;
+
+            if (chbPID_target.Checked == true)
+                chrtGyroscope.Series[cSeries.TargetValue].Enabled = true;
+            else
+                chrtGyroscope.Series[cSeries.TargetValue].Enabled = false;
+
+            if (chbPID_sensing.Checked == true)
+                chrtGyroscope.Series[cSeries.SensValue].Enabled = true;
+            else
+                chrtGyroscope.Series[cSeries.SensValue].Enabled = false;
+        }
+
+
+
+
+
+        private void chbShowAccX_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbShowAccX.Checked == true)
+                chrtAcceleration.Series[cSeries.AccX].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.AccX].Enabled = false;
+        }
+
+
+        private void chbShowAccY_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbShowAccY.Checked == true)
+                chrtAcceleration.Series[cSeries.AccY].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.AccY].Enabled = false;
+        }
+
+
+        private void chbShowAccZ_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbShowAccZ.Checked == true)
+                chrtAcceleration.Series[cSeries.AccZ].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.AccZ].Enabled = false;
+        }
+
+
+        private void chbShowGyroX_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbShowGyroX.Checked == true)
+                chrtAcceleration.Series[cSeries.Roll].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.Roll].Enabled = false;
+        }
+
+
+        private void chbShowGyroY_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbShowGyroY.Checked == true)
+                chrtAcceleration.Series[cSeries.Pitch].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.Pitch].Enabled = false;
+        }
+
+
+        private void chbShowGyroZ_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbShowGyroZ.Checked == true)
+                chrtAcceleration.Series[cSeries.Yaw].Enabled = true;
+            else
+                chrtAcceleration.Series[cSeries.Yaw].Enabled = false;
+        }
+
+
+        private void chbPID_target_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbPID_target.Checked == true)
+                chrtGyroscope.Series[cSeries.TargetValue].Enabled = true;
+            else
+                chrtGyroscope.Series[cSeries.TargetValue].Enabled = false;
+        }
+
+
+        private void chbPID_sensing_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbPID_sensing.Checked == true)
+                chrtGyroscope.Series[cSeries.SensValue].Enabled = true;
+            else
+                chrtGyroscope.Series[cSeries.SensValue].Enabled = false;
+        }
+
+
+        private void chbCurrErr_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbCurrErr.Checked == true)
+                chrtGyroscope.Series[cSeries.CurrErr].Enabled = true;
+            else
+                chrtGyroscope.Series[cSeries.CurrErr].Enabled = false;
+        }
+
+
+        private void chbAccumErr_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbAccumErr.Checked == true)
+                chrtGyroscope.Series[cSeries.AccumErr].Enabled = true;
+            else
+                chrtGyroscope.Series[cSeries.AccumErr].Enabled = false;
+        }
+
+
+
+        private void chrtAcceleration_MouseWheel(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                Axis xAxis = chrtAcceleration.ChartAreas[0].AxisX;
+                double xMin = xAxis.ScaleView.ViewMinimum;
+                double xMax = xAxis.ScaleView.ViewMaximum;
+                double xPixelPos = xAxis.PixelPositionToValue(e.Location.X);
+
+                if (e.Delta < 0 && FZoomLevel > 0)
+                {
+                    // Scrolled down, meaning zoom out
+                    if (--FZoomLevel <= 0)
+                    {
+                        FZoomLevel = 0;
+                        xAxis.ScaleView.ZoomReset();
+                    }
+                    else
+                    {
+                        double xStartPos = Math.Max(xPixelPos - (xPixelPos - xMin) * CZoomScale, 0);
+                        double xEndPos = Math.Min(xStartPos + (xMax - xMin) * CZoomScale, xAxis.Maximum);
+                        xAxis.ScaleView.Zoom(xStartPos, xEndPos);
+                    }
+                }
+                else if (e.Delta > 0)
+                {
+                    // Scrolled up, meaning zoom in
+                    double xStartPos = Math.Max(xPixelPos - (xPixelPos - xMin) / CZoomScale, 0);
+                    double xEndPos = Math.Min(xStartPos + (xMax - xMin) / CZoomScale, xAxis.Maximum);
+                    xAxis.ScaleView.Zoom(xStartPos, xEndPos);
+                    FZoomLevel++;
+                }
+            }
+            catch { }
+        }
+
+
     }
 
 }

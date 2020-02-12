@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -47,7 +44,6 @@
             this.tmUDPListener = new System.Windows.Forms.Timer(this.components);
             this.btnServerOpen = new System.Windows.Forms.Button();
             this.btnServerClose = new System.Windows.Forms.Button();
-            this.chrtDegree = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtTheta = new System.Windows.Forms.TextBox();
             this.btnMotorStop = new System.Windows.Forms.Button();
             this.btnMotorRev = new System.Windows.Forms.Button();
@@ -93,6 +89,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnPIDLogging = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grbBotCtl = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -107,12 +104,15 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.numTrgAngle = new System.Windows.Forms.NumericUpDown();
-            this.chbShowKalm = new System.Windows.Forms.CheckBox();
-            this.chbShowCompl = new System.Windows.Forms.CheckBox();
-            this.chbShowRaw = new System.Windows.Forms.CheckBox();
-            this.chbShowYaw = new System.Windows.Forms.CheckBox();
-            this.chbShowPitch = new System.Windows.Forms.CheckBox();
-            this.chbShowRoll = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rdbtnKalmanFilter = new System.Windows.Forms.RadioButton();
+            this.rdbtnCompliFilter = new System.Windows.Forms.RadioButton();
+            this.rdbtnNoFilter = new System.Windows.Forms.RadioButton();
+            this.chbPID_sensing = new System.Windows.Forms.CheckBox();
+            this.chbPID_target = new System.Windows.Forms.CheckBox();
+            this.chbReserve3 = new System.Windows.Forms.CheckBox();
+            this.chbAccumErr = new System.Windows.Forms.CheckBox();
+            this.chbCurrErr = new System.Windows.Forms.CheckBox();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -124,9 +124,8 @@
             this.chbShowAccX = new System.Windows.Forms.CheckBox();
             this.chrtGyroscope = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grvMonitor = new System.Windows.Forms.DataGridView();
-            this.btnPIDLogging = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chrtAcceleration)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chrtDegree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPWMDuty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPID_Kp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPID_Ki)).BeginInit();
@@ -147,23 +146,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTrgAngle)).BeginInit();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtGyroscope)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvMonitor)).BeginInit();
             this.SuspendLayout();
             // 
             // chrtAcceleration
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chrtAcceleration.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chrtAcceleration.Legends.Add(legend4);
-            this.chrtAcceleration.Location = new System.Drawing.Point(81, 7);
+            chartArea5.Name = "ChartArea1";
+            this.chrtAcceleration.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chrtAcceleration.Legends.Add(legend5);
+            this.chrtAcceleration.Location = new System.Drawing.Point(91, 7);
             this.chrtAcceleration.Name = "chrtAcceleration";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chrtAcceleration.Series.Add(series4);
-            this.chrtAcceleration.Size = new System.Drawing.Size(853, 190);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chrtAcceleration.Series.Add(series5);
+            this.chrtAcceleration.Size = new System.Drawing.Size(860, 288);
             this.chrtAcceleration.TabIndex = 0;
             this.chrtAcceleration.Text = "chart1";
             // 
@@ -187,7 +187,7 @@
             // 
             // btnSaveAccel
             // 
-            this.btnSaveAccel.Location = new System.Drawing.Point(87, 89);
+            this.btnSaveAccel.Location = new System.Drawing.Point(87, 156);
             this.btnSaveAccel.Name = "btnSaveAccel";
             this.btnSaveAccel.Size = new System.Drawing.Size(73, 35);
             this.btnSaveAccel.TabIndex = 12;
@@ -197,10 +197,10 @@
             // 
             // btnInitSenData
             // 
-            this.btnInitSenData.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnInitSenData.Location = new System.Drawing.Point(10, 171);
+            this.btnInitSenData.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnInitSenData.Location = new System.Drawing.Point(26, 262);
             this.btnInitSenData.Name = "btnInitSenData";
-            this.btnInitSenData.Size = new System.Drawing.Size(106, 29);
+            this.btnInitSenData.Size = new System.Drawing.Size(59, 35);
             this.btnInitSenData.TabIndex = 14;
             this.btnInitSenData.Text = "그래프지우기";
             this.btnInitSenData.UseVisualStyleBackColor = true;
@@ -231,33 +231,18 @@
             this.btnServerClose.UseVisualStyleBackColor = true;
             this.btnServerClose.Click += new System.EventHandler(this.btnServerClose_Click);
             // 
-            // chrtDegree
-            // 
-            chartArea5.Name = "ChartArea1";
-            this.chrtDegree.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chrtDegree.Legends.Add(legend5);
-            this.chrtDegree.Location = new System.Drawing.Point(81, 399);
-            this.chrtDegree.Name = "chrtDegree";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chrtDegree.Series.Add(series5);
-            this.chrtDegree.Size = new System.Drawing.Size(853, 190);
-            this.chrtDegree.TabIndex = 29;
-            this.chrtDegree.Text = "chart1";
-            // 
             // txtTheta
             // 
             this.txtTheta.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTheta.Location = new System.Drawing.Point(159, 135);
+            this.txtTheta.Location = new System.Drawing.Point(89, 24);
             this.txtTheta.Name = "txtTheta";
-            this.txtTheta.Size = new System.Drawing.Size(77, 22);
+            this.txtTheta.ReadOnly = true;
+            this.txtTheta.Size = new System.Drawing.Size(70, 22);
             this.txtTheta.TabIndex = 30;
             // 
             // btnMotorStop
             // 
-            this.btnMotorStop.Location = new System.Drawing.Point(11, 89);
+            this.btnMotorStop.Location = new System.Drawing.Point(11, 156);
             this.btnMotorStop.Name = "btnMotorStop";
             this.btnMotorStop.Size = new System.Drawing.Size(73, 35);
             this.btnMotorStop.TabIndex = 31;
@@ -267,7 +252,7 @@
             // 
             // btnMotorRev
             // 
-            this.btnMotorRev.Location = new System.Drawing.Point(87, 51);
+            this.btnMotorRev.Location = new System.Drawing.Point(87, 118);
             this.btnMotorRev.Name = "btnMotorRev";
             this.btnMotorRev.Size = new System.Drawing.Size(73, 35);
             this.btnMotorRev.TabIndex = 33;
@@ -278,7 +263,7 @@
             // numPWMDuty
             // 
             this.numPWMDuty.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.numPWMDuty.Location = new System.Drawing.Point(58, 20);
+            this.numPWMDuty.Location = new System.Drawing.Point(89, 77);
             this.numPWMDuty.Maximum = new decimal(new int[] {
             255,
             0,
@@ -291,16 +276,16 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(14, 23);
+            this.label6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(19, 83);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 16);
+            this.label6.Size = new System.Drawing.Size(70, 13);
             this.label6.TabIndex = 35;
-            this.label6.Text = "속도";
+            this.label6.Text = "PWM Duty";
             // 
             // btnMotorForw
             // 
-            this.btnMotorForw.Location = new System.Drawing.Point(11, 51);
+            this.btnMotorForw.Location = new System.Drawing.Point(11, 118);
             this.btnMotorForw.Name = "btnMotorForw";
             this.btnMotorForw.Size = new System.Drawing.Size(73, 35);
             this.btnMotorForw.TabIndex = 36;
@@ -310,7 +295,7 @@
             // 
             // btnLogStart
             // 
-            this.btnLogStart.Location = new System.Drawing.Point(163, 51);
+            this.btnLogStart.Location = new System.Drawing.Point(163, 118);
             this.btnLogStart.Name = "btnLogStart";
             this.btnLogStart.Size = new System.Drawing.Size(73, 35);
             this.btnLogStart.TabIndex = 37;
@@ -337,7 +322,7 @@
             // 
             // btnRefreshGyro
             // 
-            this.btnRefreshGyro.Location = new System.Drawing.Point(163, 89);
+            this.btnRefreshGyro.Location = new System.Drawing.Point(163, 156);
             this.btnRefreshGyro.Name = "btnRefreshGyro";
             this.btnRefreshGyro.Size = new System.Drawing.Size(73, 35);
             this.btnRefreshGyro.TabIndex = 41;
@@ -594,7 +579,7 @@
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1239, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1258, 24);
             this.menuStrip1.TabIndex = 64;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -663,7 +648,7 @@
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1239, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1258, 25);
             this.toolStrip1.TabIndex = 65;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -717,6 +702,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PID제어";
             // 
+            // btnPIDLogging
+            // 
+            this.btnPIDLogging.Location = new System.Drawing.Point(117, 100);
+            this.btnPIDLogging.Name = "btnPIDLogging";
+            this.btnPIDLogging.Size = new System.Drawing.Size(84, 25);
+            this.btnPIDLogging.TabIndex = 64;
+            this.btnPIDLogging.Text = "PID 로깅";
+            this.btnPIDLogging.UseVisualStyleBackColor = true;
+            this.btnPIDLogging.Click += new System.EventHandler(this.btnPIDLogging_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -730,12 +725,14 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.chbShowKalm);
-            this.splitContainer1.Panel2.Controls.Add(this.chbShowCompl);
-            this.splitContainer1.Panel2.Controls.Add(this.chbShowRaw);
-            this.splitContainer1.Panel2.Controls.Add(this.chbShowYaw);
-            this.splitContainer1.Panel2.Controls.Add(this.chbShowPitch);
-            this.splitContainer1.Panel2.Controls.Add(this.chbShowRoll);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox4);
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.chbPID_sensing);
+            this.splitContainer1.Panel2.Controls.Add(this.chbPID_target);
+            this.splitContainer1.Panel2.Controls.Add(this.chbReserve3);
+            this.splitContainer1.Panel2.Controls.Add(this.chbAccumErr);
+            this.splitContainer1.Panel2.Controls.Add(this.btnInitSenData);
+            this.splitContainer1.Panel2.Controls.Add(this.chbCurrErr);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox9);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox5);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox6);
@@ -745,26 +742,27 @@
             this.splitContainer1.Panel2.Controls.Add(this.chbShowAccZ);
             this.splitContainer1.Panel2.Controls.Add(this.chbShowAccY);
             this.splitContainer1.Panel2.Controls.Add(this.chbShowAccX);
-            this.splitContainer1.Panel2.Controls.Add(this.chrtDegree);
             this.splitContainer1.Panel2.Controls.Add(this.chrtGyroscope);
             this.splitContainer1.Panel2.Controls.Add(this.chrtAcceleration);
-            this.splitContainer1.Size = new System.Drawing.Size(1221, 610);
-            this.splitContainer1.SplitterDistance = 271;
+            this.splitContainer1.Size = new System.Drawing.Size(1239, 610);
+            this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 69;
             // 
             // grbBotCtl
             // 
+            this.grbBotCtl.Controls.Add(this.btnSetTrgAngle);
             this.grbBotCtl.Controls.Add(this.numPWMDuty);
+            this.grbBotCtl.Controls.Add(this.label3);
             this.grbBotCtl.Controls.Add(this.label1);
+            this.grbBotCtl.Controls.Add(this.numTrgAngle);
             this.grbBotCtl.Controls.Add(this.label6);
             this.grbBotCtl.Controls.Add(this.btnLogStart);
             this.grbBotCtl.Controls.Add(this.btnRefreshGyro);
-            this.grbBotCtl.Controls.Add(this.btnInitSenData);
             this.grbBotCtl.Controls.Add(this.btnSaveAccel);
             this.grbBotCtl.Controls.Add(this.btnMotorStop);
             this.grbBotCtl.Controls.Add(this.btnMotorForw);
-            this.grbBotCtl.Controls.Add(this.btnMotorRev);
             this.grbBotCtl.Controls.Add(this.txtTheta);
+            this.grbBotCtl.Controls.Add(this.btnMotorRev);
             this.grbBotCtl.Enabled = false;
             this.grbBotCtl.Location = new System.Drawing.Point(7, 8);
             this.grbBotCtl.Name = "grbBotCtl";
@@ -776,11 +774,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(128, 138);
+            this.label1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(18, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 41;
-            this.label1.Text = "각도";
+            this.label1.Text = "측정각도";
             // 
             // tabBotCtl
             // 
@@ -807,10 +806,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnSetTrgAngle);
             this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.numTrgAngle);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -821,9 +817,9 @@
             // 
             // btnSetTrgAngle
             // 
-            this.btnSetTrgAngle.Location = new System.Drawing.Point(121, 51);
+            this.btnSetTrgAngle.Location = new System.Drawing.Point(165, 49);
             this.btnSetTrgAngle.Name = "btnSetTrgAngle";
-            this.btnSetTrgAngle.Size = new System.Drawing.Size(85, 26);
+            this.btnSetTrgAngle.Size = new System.Drawing.Size(71, 25);
             this.btnSetTrgAngle.TabIndex = 64;
             this.btnSetTrgAngle.Text = "적용";
             this.btnSetTrgAngle.UseVisualStyleBackColor = true;
@@ -837,7 +833,7 @@
             this.groupBox3.Controls.Add(this.txtFilDeg);
             this.groupBox3.Controls.Add(this.numericUpDown3);
             this.groupBox3.Controls.Add(this.numericUpDown2);
-            this.groupBox3.Location = new System.Drawing.Point(8, 91);
+            this.groupBox3.Location = new System.Drawing.Point(8, 14);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(224, 103);
             this.groupBox3.TabIndex = 46;
@@ -904,103 +900,140 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(31, 16);
+            this.label3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(13, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 37);
+            this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 45;
-            this.label3.Text = "Target Angle(deg)";
+            this.label3.Text = "목표각도";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numTrgAngle
             // 
             this.numTrgAngle.DecimalPlaces = 3;
-            this.numTrgAngle.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.numTrgAngle.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.numTrgAngle.Increment = new decimal(new int[] {
             1,
             0,
             0,
             196608});
-            this.numTrgAngle.Location = new System.Drawing.Point(121, 23);
+            this.numTrgAngle.Location = new System.Drawing.Point(89, 49);
             this.numTrgAngle.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
             this.numTrgAngle.Name = "numTrgAngle";
-            this.numTrgAngle.Size = new System.Drawing.Size(85, 22);
+            this.numTrgAngle.Size = new System.Drawing.Size(71, 25);
             this.numTrgAngle.TabIndex = 44;
             // 
-            // chbShowKalm
+            // groupBox4
             // 
-            this.chbShowKalm.AutoSize = true;
-            this.chbShowKalm.Location = new System.Drawing.Point(7, 303);
-            this.chbShowKalm.Name = "chbShowKalm";
-            this.chbShowKalm.Size = new System.Drawing.Size(72, 16);
-            this.chbShowKalm.TabIndex = 44;
-            this.chbShowKalm.Text = "칼만필터";
-            this.chbShowKalm.UseVisualStyleBackColor = true;
+            this.groupBox4.Controls.Add(this.rdbtnKalmanFilter);
+            this.groupBox4.Controls.Add(this.rdbtnCompliFilter);
+            this.groupBox4.Controls.Add(this.rdbtnNoFilter);
+            this.groupBox4.Location = new System.Drawing.Point(4, 478);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(82, 80);
+            this.groupBox4.TabIndex = 47;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "필터적용";
             // 
-            // chbShowCompl
+            // rdbtnKalmanFilter
             // 
-            this.chbShowCompl.AutoSize = true;
-            this.chbShowCompl.Checked = true;
-            this.chbShowCompl.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowCompl.Location = new System.Drawing.Point(7, 284);
-            this.chbShowCompl.Name = "chbShowCompl";
-            this.chbShowCompl.Size = new System.Drawing.Size(72, 16);
-            this.chbShowCompl.TabIndex = 43;
-            this.chbShowCompl.Text = "상보필터";
-            this.chbShowCompl.UseVisualStyleBackColor = true;
+            this.rdbtnKalmanFilter.AutoSize = true;
+            this.rdbtnKalmanFilter.Location = new System.Drawing.Point(7, 58);
+            this.rdbtnKalmanFilter.Name = "rdbtnKalmanFilter";
+            this.rdbtnKalmanFilter.Size = new System.Drawing.Size(71, 16);
+            this.rdbtnKalmanFilter.TabIndex = 2;
+            this.rdbtnKalmanFilter.TabStop = true;
+            this.rdbtnKalmanFilter.Text = "칼만필터";
+            this.rdbtnKalmanFilter.UseVisualStyleBackColor = true;
             // 
-            // chbShowRaw
+            // rdbtnCompliFilter
             // 
-            this.chbShowRaw.AutoSize = true;
-            this.chbShowRaw.Checked = true;
-            this.chbShowRaw.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowRaw.Location = new System.Drawing.Point(7, 266);
-            this.chbShowRaw.Name = "chbShowRaw";
-            this.chbShowRaw.Size = new System.Drawing.Size(48, 16);
-            this.chbShowRaw.TabIndex = 42;
-            this.chbShowRaw.Text = "원본";
-            this.chbShowRaw.UseVisualStyleBackColor = true;
+            this.rdbtnCompliFilter.AutoSize = true;
+            this.rdbtnCompliFilter.Location = new System.Drawing.Point(7, 37);
+            this.rdbtnCompliFilter.Name = "rdbtnCompliFilter";
+            this.rdbtnCompliFilter.Size = new System.Drawing.Size(71, 16);
+            this.rdbtnCompliFilter.TabIndex = 1;
+            this.rdbtnCompliFilter.TabStop = true;
+            this.rdbtnCompliFilter.Text = "상보필터";
+            this.rdbtnCompliFilter.UseVisualStyleBackColor = true;
             // 
-            // chbShowYaw
+            // rdbtnNoFilter
             // 
-            this.chbShowYaw.AutoSize = true;
-            this.chbShowYaw.Location = new System.Drawing.Point(7, 245);
-            this.chbShowYaw.Name = "chbShowYaw";
-            this.chbShowYaw.Size = new System.Drawing.Size(49, 16);
-            this.chbShowYaw.TabIndex = 41;
-            this.chbShowYaw.Text = "Yaw";
-            this.chbShowYaw.UseVisualStyleBackColor = true;
+            this.rdbtnNoFilter.AutoSize = true;
+            this.rdbtnNoFilter.Location = new System.Drawing.Point(7, 17);
+            this.rdbtnNoFilter.Name = "rdbtnNoFilter";
+            this.rdbtnNoFilter.Size = new System.Drawing.Size(59, 16);
+            this.rdbtnNoFilter.TabIndex = 0;
+            this.rdbtnNoFilter.TabStop = true;
+            this.rdbtnNoFilter.Text = "미적용";
+            this.rdbtnNoFilter.UseVisualStyleBackColor = true;
             // 
-            // chbShowPitch
+            // chbPID_sensing
             // 
-            this.chbShowPitch.AutoSize = true;
-            this.chbShowPitch.Location = new System.Drawing.Point(7, 226);
-            this.chbShowPitch.Name = "chbShowPitch";
-            this.chbShowPitch.Size = new System.Drawing.Size(52, 16);
-            this.chbShowPitch.TabIndex = 40;
-            this.chbShowPitch.Text = "Pitch";
-            this.chbShowPitch.UseVisualStyleBackColor = true;
+            this.chbPID_sensing.AutoSize = true;
+            this.chbPID_sensing.Location = new System.Drawing.Point(7, 348);
+            this.chbPID_sensing.Name = "chbPID_sensing";
+            this.chbPID_sensing.Size = new System.Drawing.Size(70, 16);
+            this.chbPID_sensing.TabIndex = 46;
+            this.chbPID_sensing.Text = "Sensing";
+            this.chbPID_sensing.UseVisualStyleBackColor = true;
+            this.chbPID_sensing.CheckedChanged += new System.EventHandler(this.chbPID_sensing_CheckedChanged);
             // 
-            // chbShowRoll
+            // chbPID_target
             // 
-            this.chbShowRoll.AutoSize = true;
-            this.chbShowRoll.Checked = true;
-            this.chbShowRoll.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowRoll.Location = new System.Drawing.Point(7, 208);
-            this.chbShowRoll.Name = "chbShowRoll";
-            this.chbShowRoll.Size = new System.Drawing.Size(45, 16);
-            this.chbShowRoll.TabIndex = 39;
-            this.chbShowRoll.Text = "Roll";
-            this.chbShowRoll.UseVisualStyleBackColor = true;
+            this.chbPID_target.AutoSize = true;
+            this.chbPID_target.Checked = true;
+            this.chbPID_target.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbPID_target.Location = new System.Drawing.Point(7, 330);
+            this.chbPID_target.Name = "chbPID_target";
+            this.chbPID_target.Size = new System.Drawing.Size(60, 16);
+            this.chbPID_target.TabIndex = 45;
+            this.chbPID_target.Text = "Target";
+            this.chbPID_target.UseVisualStyleBackColor = true;
+            this.chbPID_target.CheckedChanged += new System.EventHandler(this.chbPID_target_CheckedChanged);
+            // 
+            // chbReserve3
+            // 
+            this.chbReserve3.AutoSize = true;
+            this.chbReserve3.Location = new System.Drawing.Point(7, 404);
+            this.chbReserve3.Name = "chbReserve3";
+            this.chbReserve3.Size = new System.Drawing.Size(56, 16);
+            this.chbReserve3.TabIndex = 41;
+            this.chbReserve3.Text = "Res.3";
+            this.chbReserve3.UseVisualStyleBackColor = true;
+            // 
+            // chbAccumErr
+            // 
+            this.chbAccumErr.AutoSize = true;
+            this.chbAccumErr.Location = new System.Drawing.Point(7, 384);
+            this.chbAccumErr.Name = "chbAccumErr";
+            this.chbAccumErr.Size = new System.Drawing.Size(77, 16);
+            this.chbAccumErr.TabIndex = 40;
+            this.chbAccumErr.Text = "Accu Err.";
+            this.chbAccumErr.UseVisualStyleBackColor = true;
+            this.chbAccumErr.CheckedChanged += new System.EventHandler(this.chbAccumErr_CheckedChanged);
+            // 
+            // chbCurrErr
+            // 
+            this.chbCurrErr.AutoSize = true;
+            this.chbCurrErr.Checked = true;
+            this.chbCurrErr.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbCurrErr.Location = new System.Drawing.Point(7, 366);
+            this.chbCurrErr.Name = "chbCurrErr";
+            this.chbCurrErr.Size = new System.Drawing.Size(72, 16);
+            this.chbCurrErr.TabIndex = 39;
+            this.chbCurrErr.Text = "Curr Err.";
+            this.chbCurrErr.UseVisualStyleBackColor = true;
+            this.chbCurrErr.CheckedChanged += new System.EventHandler(this.chbCurrErr_CheckedChanged);
             // 
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(7, 168);
+            this.checkBox9.Location = new System.Drawing.Point(12, 156);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(56, 16);
             this.checkBox9.TabIndex = 38;
@@ -1010,7 +1043,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(7, 149);
+            this.checkBox5.Location = new System.Drawing.Point(12, 137);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(56, 16);
             this.checkBox5.TabIndex = 37;
@@ -1020,7 +1053,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(7, 130);
+            this.checkBox6.Location = new System.Drawing.Point(12, 118);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(56, 16);
             this.checkBox6.TabIndex = 36;
@@ -1030,68 +1063,74 @@
             // chbShowGyroZ
             // 
             this.chbShowGyroZ.AutoSize = true;
-            this.chbShowGyroZ.Location = new System.Drawing.Point(7, 111);
+            this.chbShowGyroZ.Location = new System.Drawing.Point(12, 101);
             this.chbShowGyroZ.Name = "chbShowGyroZ";
-            this.chbShowGyroZ.Size = new System.Drawing.Size(63, 16);
+            this.chbShowGyroZ.Size = new System.Drawing.Size(49, 16);
             this.chbShowGyroZ.TabIndex = 35;
-            this.chbShowGyroZ.Text = "Gyro.Z";
+            this.chbShowGyroZ.Text = "Yaw";
             this.chbShowGyroZ.UseVisualStyleBackColor = true;
+            this.chbShowGyroZ.CheckedChanged += new System.EventHandler(this.chbShowGyroZ_CheckedChanged);
             // 
             // chbShowGyroY
             // 
             this.chbShowGyroY.AutoSize = true;
-            this.chbShowGyroY.Location = new System.Drawing.Point(7, 90);
+            this.chbShowGyroY.Location = new System.Drawing.Point(12, 83);
             this.chbShowGyroY.Name = "chbShowGyroY";
-            this.chbShowGyroY.Size = new System.Drawing.Size(63, 16);
+            this.chbShowGyroY.Size = new System.Drawing.Size(52, 16);
             this.chbShowGyroY.TabIndex = 34;
-            this.chbShowGyroY.Text = "Gyro.Y";
+            this.chbShowGyroY.Text = "Pitch";
             this.chbShowGyroY.UseVisualStyleBackColor = true;
+            this.chbShowGyroY.CheckedChanged += new System.EventHandler(this.chbShowGyroY_CheckedChanged);
             // 
             // chbShowGyroX
             // 
             this.chbShowGyroX.AutoSize = true;
             this.chbShowGyroX.Checked = true;
             this.chbShowGyroX.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowGyroX.Location = new System.Drawing.Point(7, 70);
+            this.chbShowGyroX.Location = new System.Drawing.Point(12, 66);
             this.chbShowGyroX.Name = "chbShowGyroX";
-            this.chbShowGyroX.Size = new System.Drawing.Size(63, 16);
+            this.chbShowGyroX.Size = new System.Drawing.Size(45, 16);
             this.chbShowGyroX.TabIndex = 33;
-            this.chbShowGyroX.Text = "Gyro.X";
+            this.chbShowGyroX.Text = "Roll";
             this.chbShowGyroX.UseVisualStyleBackColor = true;
+            this.chbShowGyroX.CheckedChanged += new System.EventHandler(this.chbShowGyroX_CheckedChanged);
             // 
             // chbShowAccZ
             // 
             this.chbShowAccZ.AutoSize = true;
             this.chbShowAccZ.Checked = true;
             this.chbShowAccZ.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowAccZ.Location = new System.Drawing.Point(7, 51);
+            this.chbShowAccZ.Location = new System.Drawing.Point(12, 47);
             this.chbShowAccZ.Name = "chbShowAccZ";
             this.chbShowAccZ.Size = new System.Drawing.Size(58, 16);
             this.chbShowAccZ.TabIndex = 32;
             this.chbShowAccZ.Text = "Acc.Z";
             this.chbShowAccZ.UseVisualStyleBackColor = true;
+            this.chbShowAccZ.CheckedChanged += new System.EventHandler(this.chbShowAccZ_CheckedChanged);
             // 
             // chbShowAccY
             // 
             this.chbShowAccY.AutoSize = true;
             this.chbShowAccY.Checked = true;
             this.chbShowAccY.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowAccY.Location = new System.Drawing.Point(7, 31);
+            this.chbShowAccY.Location = new System.Drawing.Point(12, 29);
             this.chbShowAccY.Name = "chbShowAccY";
             this.chbShowAccY.Size = new System.Drawing.Size(58, 16);
             this.chbShowAccY.TabIndex = 31;
             this.chbShowAccY.Text = "Acc.Y";
             this.chbShowAccY.UseVisualStyleBackColor = true;
+            this.chbShowAccY.CheckedChanged += new System.EventHandler(this.chbShowAccY_CheckedChanged);
             // 
             // chbShowAccX
             // 
             this.chbShowAccX.AutoSize = true;
-            this.chbShowAccX.Location = new System.Drawing.Point(7, 11);
+            this.chbShowAccX.Location = new System.Drawing.Point(12, 11);
             this.chbShowAccX.Name = "chbShowAccX";
             this.chbShowAccX.Size = new System.Drawing.Size(58, 16);
             this.chbShowAccX.TabIndex = 30;
             this.chbShowAccX.Text = "Acc.X";
             this.chbShowAccX.UseVisualStyleBackColor = true;
+            this.chbShowAccX.CheckedChanged += new System.EventHandler(this.chbShowAccX_CheckedChanged);
             // 
             // chrtGyroscope
             // 
@@ -1099,13 +1138,13 @@
             this.chrtGyroscope.ChartAreas.Add(chartArea6);
             legend6.Name = "Legend1";
             this.chrtGyroscope.Legends.Add(legend6);
-            this.chrtGyroscope.Location = new System.Drawing.Point(81, 203);
+            this.chrtGyroscope.Location = new System.Drawing.Point(91, 301);
             this.chrtGyroscope.Name = "chrtGyroscope";
             series6.ChartArea = "ChartArea1";
             series6.Legend = "Legend1";
             series6.Name = "Series1";
             this.chrtGyroscope.Series.Add(series6);
-            this.chrtGyroscope.Size = new System.Drawing.Size(853, 190);
+            this.chrtGyroscope.Size = new System.Drawing.Size(860, 298);
             this.chrtGyroscope.TabIndex = 3;
             this.chrtGyroscope.Text = "chart2";
             // 
@@ -1118,21 +1157,21 @@
             this.grvMonitor.Size = new System.Drawing.Size(865, 71);
             this.grvMonitor.TabIndex = 70;
             // 
-            // btnPIDLogging
+            // button1
             // 
-            this.btnPIDLogging.Location = new System.Drawing.Point(117, 100);
-            this.btnPIDLogging.Name = "btnPIDLogging";
-            this.btnPIDLogging.Size = new System.Drawing.Size(84, 25);
-            this.btnPIDLogging.TabIndex = 64;
-            this.btnPIDLogging.Text = "PID 로깅";
-            this.btnPIDLogging.UseVisualStyleBackColor = true;
-            this.btnPIDLogging.Click += new System.EventHandler(this.btnPIDLogging_Click);
+            this.button1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(26, 564);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(59, 35);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "그래프지우기";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1239, 746);
+            this.ClientSize = new System.Drawing.Size(1258, 746);
             this.Controls.Add(this.grvMonitor);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
@@ -1147,7 +1186,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chrtAcceleration)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chrtDegree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPWMDuty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPID_Kp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPID_Ki)).EndInit();
@@ -1175,6 +1213,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTrgAngle)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtGyroscope)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvMonitor)).EndInit();
             this.ResumeLayout(false);
@@ -1192,7 +1232,6 @@
         private System.Windows.Forms.Timer tmUDPListener;
         private System.Windows.Forms.Button btnServerOpen;
         private System.Windows.Forms.Button btnServerClose;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chrtDegree;
         private System.Windows.Forms.TextBox txtTheta;
         private System.Windows.Forms.Button btnMotorStop;
         private System.Windows.Forms.Button btnMotorRev;
@@ -1250,12 +1289,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numTrgAngle;
-        private System.Windows.Forms.CheckBox chbShowKalm;
-        private System.Windows.Forms.CheckBox chbShowCompl;
-        private System.Windows.Forms.CheckBox chbShowRaw;
-        private System.Windows.Forms.CheckBox chbShowYaw;
-        private System.Windows.Forms.CheckBox chbShowPitch;
-        private System.Windows.Forms.CheckBox chbShowRoll;
+        private System.Windows.Forms.CheckBox chbReserve3;
+        private System.Windows.Forms.CheckBox chbAccumErr;
+        private System.Windows.Forms.CheckBox chbCurrErr;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
@@ -1270,6 +1306,13 @@
         private System.Windows.Forms.ToolStripMenuItem testModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Button btnPIDLogging;
+        private System.Windows.Forms.CheckBox chbPID_sensing;
+        private System.Windows.Forms.CheckBox chbPID_target;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton rdbtnKalmanFilter;
+        private System.Windows.Forms.RadioButton rdbtnCompliFilter;
+        private System.Windows.Forms.RadioButton rdbtnNoFilter;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -75,9 +75,9 @@ namespace winFormSenValAnalyzer
 
         int timePassed      = 0;
         
-        double maxAccVal    = 1.0;
+        double maxIMU_val    = 1.0;
         double maxGyroVal   = 1.0;
-        double minAccVal    = -1.0;
+        double minIMU_val    = -1.0;
         double minGyroVal   = -1.0;
         double deg_normal   = 0.0;
         double initDeg      = 0.0;
@@ -97,11 +97,6 @@ namespace winFormSenValAnalyzer
         public Form1()
         {
             InitializeComponent();
-
-            //if (Debugger.IsAttached == false)
-            //{
-            //    NativeMethods.AllocConsole();
-            //}
         }
 
 
@@ -117,11 +112,6 @@ namespace winFormSenValAnalyzer
 
             tbInit_tables();
             grInit_graph();
-
-
-            
-
-            
 
         }
 
@@ -240,8 +230,7 @@ namespace winFormSenValAnalyzer
             chrtAcceleration.Series[0].Points.Clear();
             chrtAcceleration.Series[1].Points.Clear();
             chrtAcceleration.Series[2].Points.Clear();
-            chrtDegree.Series[0].Points.Clear();
-            chrtDegree.Series[1].Points.Clear();
+
             chrtGyroscope.Series[0].Points.Clear();
             chrtGyroscope.Series[1].Points.Clear();
             chrtGyroscope.Series[2].Points.Clear();
@@ -437,6 +426,8 @@ namespace winFormSenValAnalyzer
             byte[] sendData = udpHandle.UDP_sendData(cUDP_CMD.uCMD_PID_GET_PARAM);
             srv.Send(sendData, sendData.Length, remoteEP);
         }
+
+        
     }
 
 

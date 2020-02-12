@@ -70,12 +70,16 @@ namespace winFormSenValAnalyzer.control
         private double pP_reg;
         private double pI_reg;
         private double pD_reg;
+        private double pTarget;
+        private double pSensing;
 
         public double curr_err { get { return this.pCurr_err; }  set { this.pCurr_err = value; } }
         public double accum_err { get { return this.pAccum_err; }  set { this.pAccum_err = value; } }
         public double P_reg { get { return this.pP_reg; }  set { this.pP_reg = value; } }
         public double I_reg { get { return this.pI_reg; }  set { this.pI_reg = value; } }
         public double D_reg { get { return this.pD_reg; }  set { this.pD_reg = value; } }
+        public double Target { get { return this.pTarget; } set { this.pTarget = value; } }
+        public double Sensing { get { return this.pSensing; } set { this.pSensing = value; } }
 
         //public double curr_err { get; set; }
         //public double accum_err { get; set; }
