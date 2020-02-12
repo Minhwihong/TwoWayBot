@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chrtAcceleration = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtUDP_PortNum = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -92,22 +92,23 @@
             this.btnPIDLogging = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grbBotCtl = new System.Windows.Forms.GroupBox();
+            this.btnSetTrgAngle = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.numTrgAngle = new System.Windows.Forms.NumericUpDown();
             this.tabBotCtl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnSetTrgAngle = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numTrgAngle = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rdbtnKalmanFilter = new System.Windows.Forms.RadioButton();
             this.rdbtnCompliFilter = new System.Windows.Forms.RadioButton();
             this.rdbtnNoFilter = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.chbPID_sensing = new System.Windows.Forms.CheckBox();
             this.chbPID_target = new System.Windows.Forms.CheckBox();
             this.chbReserve3 = new System.Windows.Forms.CheckBox();
@@ -124,7 +125,6 @@
             this.chbShowAccX = new System.Windows.Forms.CheckBox();
             this.chrtGyroscope = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grvMonitor = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chrtAcceleration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPWMDuty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPID_Kp)).BeginInit();
@@ -139,13 +139,13 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.grbBotCtl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTrgAngle)).BeginInit();
             this.tabBotCtl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTrgAngle)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtGyroscope)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvMonitor)).BeginInit();
@@ -153,16 +153,16 @@
             // 
             // chrtAcceleration
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chrtAcceleration.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chrtAcceleration.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chrtAcceleration.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chrtAcceleration.Legends.Add(legend1);
             this.chrtAcceleration.Location = new System.Drawing.Point(91, 7);
             this.chrtAcceleration.Name = "chrtAcceleration";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chrtAcceleration.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chrtAcceleration.Series.Add(series1);
             this.chrtAcceleration.Size = new System.Drawing.Size(860, 288);
             this.chrtAcceleration.TabIndex = 0;
             this.chrtAcceleration.Text = "chart1";
@@ -771,6 +771,26 @@
             this.grbBotCtl.TabStop = false;
             this.grbBotCtl.Text = "로봇 조종";
             // 
+            // btnSetTrgAngle
+            // 
+            this.btnSetTrgAngle.Location = new System.Drawing.Point(165, 49);
+            this.btnSetTrgAngle.Name = "btnSetTrgAngle";
+            this.btnSetTrgAngle.Size = new System.Drawing.Size(71, 25);
+            this.btnSetTrgAngle.TabIndex = 64;
+            this.btnSetTrgAngle.Text = "적용";
+            this.btnSetTrgAngle.UseVisualStyleBackColor = true;
+            this.btnSetTrgAngle.Click += new System.EventHandler(this.btnSetTrgAngle_Click);
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(13, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 25);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "목표각도";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -780,6 +800,25 @@
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 41;
             this.label1.Text = "측정각도";
+            // 
+            // numTrgAngle
+            // 
+            this.numTrgAngle.DecimalPlaces = 3;
+            this.numTrgAngle.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.numTrgAngle.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.numTrgAngle.Location = new System.Drawing.Point(89, 49);
+            this.numTrgAngle.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numTrgAngle.Name = "numTrgAngle";
+            this.numTrgAngle.Size = new System.Drawing.Size(71, 25);
+            this.numTrgAngle.TabIndex = 44;
             // 
             // tabBotCtl
             // 
@@ -814,16 +853,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "각도 보정";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnSetTrgAngle
-            // 
-            this.btnSetTrgAngle.Location = new System.Drawing.Point(165, 49);
-            this.btnSetTrgAngle.Name = "btnSetTrgAngle";
-            this.btnSetTrgAngle.Size = new System.Drawing.Size(71, 25);
-            this.btnSetTrgAngle.TabIndex = 64;
-            this.btnSetTrgAngle.Text = "적용";
-            this.btnSetTrgAngle.UseVisualStyleBackColor = true;
-            this.btnSetTrgAngle.Click += new System.EventHandler(this.btnSetTrgAngle_Click);
             // 
             // groupBox3
             // 
@@ -898,41 +927,12 @@
             this.numericUpDown2.Size = new System.Drawing.Size(85, 22);
             this.numericUpDown2.TabIndex = 46;
             // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(13, 49);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 25);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "목표각도";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // numTrgAngle
-            // 
-            this.numTrgAngle.DecimalPlaces = 3;
-            this.numTrgAngle.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.numTrgAngle.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
-            this.numTrgAngle.Location = new System.Drawing.Point(89, 49);
-            this.numTrgAngle.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.numTrgAngle.Name = "numTrgAngle";
-            this.numTrgAngle.Size = new System.Drawing.Size(71, 25);
-            this.numTrgAngle.TabIndex = 44;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.rdbtnKalmanFilter);
             this.groupBox4.Controls.Add(this.rdbtnCompliFilter);
             this.groupBox4.Controls.Add(this.rdbtnNoFilter);
-            this.groupBox4.Location = new System.Drawing.Point(4, 478);
+            this.groupBox4.Location = new System.Drawing.Point(5, 176);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(82, 80);
             this.groupBox4.TabIndex = 47;
@@ -971,6 +971,16 @@
             this.rdbtnNoFilter.TabStop = true;
             this.rdbtnNoFilter.Text = "미적용";
             this.rdbtnNoFilter.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(26, 564);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(59, 35);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "그래프지우기";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // chbPID_sensing
             // 
@@ -1033,7 +1043,7 @@
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(12, 156);
+            this.checkBox9.Location = new System.Drawing.Point(12, 154);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(56, 16);
             this.checkBox9.TabIndex = 38;
@@ -1043,7 +1053,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(12, 137);
+            this.checkBox5.Location = new System.Drawing.Point(12, 135);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(56, 16);
             this.checkBox5.TabIndex = 37;
@@ -1053,7 +1063,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(12, 118);
+            this.checkBox6.Location = new System.Drawing.Point(12, 116);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(56, 16);
             this.checkBox6.TabIndex = 36;
@@ -1063,7 +1073,7 @@
             // chbShowGyroZ
             // 
             this.chbShowGyroZ.AutoSize = true;
-            this.chbShowGyroZ.Location = new System.Drawing.Point(12, 101);
+            this.chbShowGyroZ.Location = new System.Drawing.Point(12, 99);
             this.chbShowGyroZ.Name = "chbShowGyroZ";
             this.chbShowGyroZ.Size = new System.Drawing.Size(49, 16);
             this.chbShowGyroZ.TabIndex = 35;
@@ -1074,7 +1084,7 @@
             // chbShowGyroY
             // 
             this.chbShowGyroY.AutoSize = true;
-            this.chbShowGyroY.Location = new System.Drawing.Point(12, 83);
+            this.chbShowGyroY.Location = new System.Drawing.Point(12, 81);
             this.chbShowGyroY.Name = "chbShowGyroY";
             this.chbShowGyroY.Size = new System.Drawing.Size(52, 16);
             this.chbShowGyroY.TabIndex = 34;
@@ -1087,7 +1097,7 @@
             this.chbShowGyroX.AutoSize = true;
             this.chbShowGyroX.Checked = true;
             this.chbShowGyroX.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowGyroX.Location = new System.Drawing.Point(12, 66);
+            this.chbShowGyroX.Location = new System.Drawing.Point(12, 64);
             this.chbShowGyroX.Name = "chbShowGyroX";
             this.chbShowGyroX.Size = new System.Drawing.Size(45, 16);
             this.chbShowGyroX.TabIndex = 33;
@@ -1100,7 +1110,7 @@
             this.chbShowAccZ.AutoSize = true;
             this.chbShowAccZ.Checked = true;
             this.chbShowAccZ.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowAccZ.Location = new System.Drawing.Point(12, 47);
+            this.chbShowAccZ.Location = new System.Drawing.Point(12, 45);
             this.chbShowAccZ.Name = "chbShowAccZ";
             this.chbShowAccZ.Size = new System.Drawing.Size(58, 16);
             this.chbShowAccZ.TabIndex = 32;
@@ -1113,7 +1123,7 @@
             this.chbShowAccY.AutoSize = true;
             this.chbShowAccY.Checked = true;
             this.chbShowAccY.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowAccY.Location = new System.Drawing.Point(12, 29);
+            this.chbShowAccY.Location = new System.Drawing.Point(12, 27);
             this.chbShowAccY.Name = "chbShowAccY";
             this.chbShowAccY.Size = new System.Drawing.Size(58, 16);
             this.chbShowAccY.TabIndex = 31;
@@ -1124,7 +1134,7 @@
             // chbShowAccX
             // 
             this.chbShowAccX.AutoSize = true;
-            this.chbShowAccX.Location = new System.Drawing.Point(12, 11);
+            this.chbShowAccX.Location = new System.Drawing.Point(12, 9);
             this.chbShowAccX.Name = "chbShowAccX";
             this.chbShowAccX.Size = new System.Drawing.Size(58, 16);
             this.chbShowAccX.TabIndex = 30;
@@ -1134,16 +1144,16 @@
             // 
             // chrtGyroscope
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chrtGyroscope.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chrtGyroscope.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.chrtGyroscope.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chrtGyroscope.Legends.Add(legend2);
             this.chrtGyroscope.Location = new System.Drawing.Point(91, 301);
             this.chrtGyroscope.Name = "chrtGyroscope";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chrtGyroscope.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chrtGyroscope.Series.Add(series2);
             this.chrtGyroscope.Size = new System.Drawing.Size(860, 298);
             this.chrtGyroscope.TabIndex = 3;
             this.chrtGyroscope.Text = "chart2";
@@ -1156,16 +1166,6 @@
             this.grvMonitor.RowTemplate.Height = 23;
             this.grvMonitor.Size = new System.Drawing.Size(865, 71);
             this.grvMonitor.TabIndex = 70;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(26, 564);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 35);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "그래프지우기";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1205,6 +1205,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.grbBotCtl.ResumeLayout(false);
             this.grbBotCtl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTrgAngle)).EndInit();
             this.tabBotCtl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -1212,7 +1213,6 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTrgAngle)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtGyroscope)).EndInit();

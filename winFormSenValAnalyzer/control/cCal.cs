@@ -54,6 +54,63 @@ namespace winFormSenValAnalyzer.control
     }
 
 
+    class cFilter
+    {
+        public cFilter()
+        {
+
+        }
+
+        private double complBias_Acc = 0.0;
+        private double complBias_Gyro = 0.0;
+
+
+
+        public bool setBias_inComplementary(double inD1, double inD2)
+        {
+            double beta;
+            double compare = 0.0;
+            if (inD1 > inD2)
+            {
+                beta = (1.0 - inD2);
+                compare = Math.Abs(inD1 - beta);
+            }
+            else if(inD1 < inD2)
+            {
+                beta = (1.0 - inD1);
+                compare = Math.Abs(inD2 - beta);
+            }
+            else
+            {
+                compare = Math.Abs(inD2 - inD1);
+            }
+
+            if (0.0000001 < compare)
+                return false;
+
+
+
+            complBias_Acc = inD1;
+            complBias_Gyro = inD2;
+            return true;
+        }
+
+        public double applyComplementary(double inVal)
+        {
+
+
+            return 0.0;
+        }
+
+        public double applyKalman(double inVal)
+        {
+            return 0.0;
+        }
+
+    }
+
+
+
     class cPID
     {
         public cPID()
